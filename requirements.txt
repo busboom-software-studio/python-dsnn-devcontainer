@@ -15,8 +15,6 @@ numpy
 opencv-python
 pandas
 plotly
-processing-py
-pygame
 python-dotenv
 python-slugify
 pytube
