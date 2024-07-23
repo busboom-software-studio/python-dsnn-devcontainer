@@ -17,6 +17,13 @@ COPY ./.devcontainer/sync_deps.py /workspaces/session/post-start/
 COPY requirements.txt /workspaces/session/
 RUN pip --disable-pip-version-check --no-cache-dir install -r /workspaces/session/requirements.txt
 
+COPY requirements-ds.txt /workspaces/session/
+RUN pip --disable-pip-version-check --no-cache-dir install -r /workspaces/session/requirements-ds.txt
+
+COPY requirements-nn.txt /workspaces/session/
+#RUN pip --disable-pip-version-check --no-cache-dir install -r /workspaces/session/requirements-nn.txt
+
+
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update \
 #     && export DEBIAN_FRONTEND=noninteractive \

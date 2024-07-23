@@ -28,7 +28,11 @@ npm install -g @devcontainers/cli
 cd <workspace, with a .devcontainer>
 
 # Build
-IMAGE_NAME=jtlpython:20240719
+IMAGE_BASE=python-dsnn
+IMAGE_TAG=20240722
+IMAGE_NAME=$IMAGE_BASE:$IMAGE_TAG
+IMAGE_LATEST_NAME=$IMAGE_BASE:latest
+
 ORG=busboom-software-studio
 USER=ericbusboom
 
@@ -37,7 +41,11 @@ devcontainer build --workspace-folder . --image-name ghcr.io/$ORG/$IMAGE_NAME
 #Login to container registry
 echo $GITHUB_TOKEN | docker login ghcr.io -u $USER  --password-stdin
 
+docker tag ghcr.io/$ORG/$IMAGE_NAME ghcr.io/$ORG/$IMAGE_LATEST_NAME
+
 # Push
 docker push ghcr.io/$ORG/$IMAGE_NAME
+```
 
 The package will be in the packages tab of the [League-Infrastructure](https://github.com/busboom-software-studio) repo, https://github.com/orgs/busboom-software-studio/packages
+
